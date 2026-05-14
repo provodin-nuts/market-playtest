@@ -328,6 +328,9 @@ export default function PurchaseScreen({ boost, onBack }: PurchaseScreenProps) {
         <div
           className="flex items-center justify-center rounded-[20px] cursor-pointer"
           style={{ height: 52, backgroundImage: PAY_BTN_BG, pointerEvents: "auto" }}
+          onClick={() => {
+            window.location.href = `https://earn-v2-combined.pages.dev?activated=true&boost=${boost}`;
+          }}
         >
           <p className="font-['Russo_One:Regular',sans-serif] leading-[16px] text-[#161616] text-[16px] text-center tracking-[0.96px] uppercase">
             Pay ${total.toFixed(2)}
