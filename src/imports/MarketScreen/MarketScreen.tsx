@@ -124,7 +124,7 @@ function SegmentTitle({ onHistoryClick }: { onHistoryClick?: () => void }) {
   );
 }
 
-const CHIPS = ["All", "Boosts", "Lootboxes", "Risk glasses", "Specials"];
+const CHIPS = ["All", "Boosts", "Specials"];
 
 function Chips({ active, onSelect }: { active: string; onSelect: (c: string) => void }) {
   return (
@@ -173,27 +173,25 @@ function BoostCard({ img, name, price, oldPrice, discount, income, onClick }: Bo
       <div className="flex flex-col justify-between flex-1 p-[12px] min-w-0">
         {/* Price */}
         <div className="flex flex-col gap-[4px]">
-          <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[14px] text-[12px] text-[#b9b9b9] tracking-[0.06px] whitespace-nowrap">Price:</p>
-          <div className="flex items-center gap-[6px]">
-            <div className="flex flex-col gap-[1px]">
-              <p className="font-['Russo_One:Regular',sans-serif] leading-[24px] text-[20px] text-white tracking-[0.2px] whitespace-nowrap" style={{ color: oldPrice ? "#EE4444" : "white" }}>
-                {price}
-              </p>
-              {oldPrice && (
-                <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[14px] text-[12px] tracking-[0.06px] whitespace-nowrap line-through" style={{ color: "#6E6E6E" }}>
-                  {oldPrice}
-                </p>
-              )}
-            </div>
+          <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[14px] text-[12px] text-[#b9b9b9] tracking-[0.06px]">Price:</p>
+          <div className="flex flex-wrap items-start gap-[6px]">
+            <p className="font-['Russo_One:Regular',sans-serif] leading-[24px] text-[20px] tracking-[0.2px] whitespace-nowrap" style={{ color: oldPrice ? "#EE4444" : "white" }}>
+              {price}
+            </p>
             {discount && (
               <div
-                className="flex items-center justify-center px-[6px] py-[2px] rounded-[6px] shrink-0 self-start"
+                className="flex items-center justify-center px-[6px] py-[2px] rounded-[6px] shrink-0 mt-[2px]"
                 style={{ background: "linear-gradient(135deg, #0095FF 0%, #2AC300 100%)" }}
               >
                 <p className="font-['Russo_One:Regular',sans-serif] leading-[14px] text-[11px] text-white tracking-[0.4px] whitespace-nowrap">{discount}</p>
               </div>
             )}
           </div>
+          {oldPrice && (
+            <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[13px] text-[11px] tracking-[0.06px] line-through whitespace-nowrap" style={{ color: "#6E6E6E" }}>
+              {oldPrice}
+            </p>
+          )}
         </div>
         {/* Income description */}
         <div className="flex flex-col gap-[2px]">
