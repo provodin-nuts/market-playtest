@@ -2,8 +2,9 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import MarketScreen from "../imports/MarketScreen/MarketScreen";
 import BoostDetail, { BoostType } from "../imports/BoostDetail/BoostDetail";
+import PurchaseScreen from "../imports/PurchaseScreen/PurchaseScreen";
 
-type Screen = "market" | "boost-detail";
+type Screen = "market" | "boost-detail" | "purchase";
 
 const FRAME_W = 360;
 
@@ -14,6 +15,10 @@ export default function App() {
   const openBoost = (boost: BoostType) => {
     setSelectedBoost(boost);
     setScreen("boost-detail");
+  };
+
+  const openPurchase = () => {
+    setScreen("purchase");
   };
 
   return (
@@ -49,6 +54,22 @@ export default function App() {
                 onBoostClick={(b) => {
                   setSelectedBoost(b);
                 }}
+                onBuy={openPurchase}
+              />
+            </motion.div>
+          )}
+
+          {screen === "purchase" && (
+            <motion.div
+              key={`purchase-${selectedBoost}`}
+              className="absolute inset-0"
+              initial={{ x: "100%" }}
+              animate={{ x: 0, transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] } }}
+              exit={{ x: "100%", transition: { duration: 0.25 } }}
+            >
+              <PurchaseScreen
+                boost={selectedBoost}
+                onBack={() => setScreen("boost-detail")}
               />
             </motion.div>
           )}

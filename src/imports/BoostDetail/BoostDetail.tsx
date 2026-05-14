@@ -143,9 +143,10 @@ interface BoostDetailProps {
   boost: BoostType;
   onBack: () => void;
   onBoostClick?: (b: BoostType) => void;
+  onBuy?: () => void;
 }
 
-export default function BoostDetail({ boost, onBack }: BoostDetailProps) {
+export default function BoostDetail({ boost, onBack, onBuy }: BoostDetailProps) {
   const cfg = BOOSTS[boost];
   const timer = useCountdown(5079);
   const [specsExpanded, setSpecsExpanded] = useState(false);
@@ -285,6 +286,7 @@ export default function BoostDetail({ boost, onBack }: BoostDetailProps) {
         <div
           className="flex items-center justify-center rounded-[20px] cursor-pointer"
           style={{ height: 52, backgroundImage: BUY_BTN_BG, pointerEvents: "auto" }}
+          onClick={onBuy}
         >
           <p className="font-['Russo_One:Regular',sans-serif] leading-[16px] text-[#161616] text-[16px] text-center tracking-[0.96px] uppercase">
             Buy
