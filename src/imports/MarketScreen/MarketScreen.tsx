@@ -2,7 +2,7 @@ const WITHDRAW_BTN = "url('data:image/svg+xml;utf8,<svg viewBox=\\'0 0 82 40\\' 
 
 const ARROW_BTN = "url('data:image/svg+xml;utf8,<svg viewBox=\\'0 0 60 32\\' xmlns=\\'http://www.w3.org/2000/svg\\' preserveAspectRatio=\\'none\\'><defs><linearGradient id=\\'g\\' x1=\\'0\\' y1=\\'0\\' x2=\\'1\\' y2=\\'1\\'><stop offset=\\'0%\\' stop-color=\\'%23ABA9FF\\'/><stop offset=\\'100%\\' stop-color=\\'%236EFF46\\'/></linearGradient></defs><rect width=\\'60\\' height=\\'32\\' rx=\\'12\\' fill=\\'url(%23g)\\'/></svg>')";
 
-type BoostType = "standard" | "prime" | "elite";
+import type { BoostType } from "../BoostDetail/BoostDetail";
 
 interface MarketScreenProps {
   onBoostClick: (boost: BoostType) => void;

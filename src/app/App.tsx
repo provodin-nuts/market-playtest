@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import MarketScreen from "../imports/MarketScreen/MarketScreen";
-import BoostDetail from "../imports/BoostDetail/BoostDetail";
+import BoostDetail, { BoostType } from "../imports/BoostDetail/BoostDetail";
 
-type BoostType = "standard" | "prime" | "elite";
 type Screen = "market" | "boost-detail";
 
 const FRAME_W = 360;
@@ -30,7 +29,7 @@ export default function App() {
               className="absolute inset-0"
               initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.25 } }}
+              exit={{ opacity: 0, transition: { duration: 0.2 } }}
             >
               <MarketScreen onBoostClick={openBoost} />
             </motion.div>
@@ -38,13 +37,19 @@ export default function App() {
 
           {screen === "boost-detail" && (
             <motion.div
-              key="boost-detail"
+              key={`boost-detail-${selectedBoost}`}
               className="absolute inset-0"
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1, transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] } }}
-              exit={{ x: "100%", opacity: 0, transition: { duration: 0.25 } }}
+              initial={{ x: "100%" }}
+              animate={{ x: 0, transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] } }}
+              exit={{ x: "100%", transition: { duration: 0.25 } }}
             >
-              <BoostDetail boost={selectedBoost} onBack={() => setScreen("market")} />
+              <BoostDetail
+                boost={selectedBoost}
+                onBack={() => setScreen("market")}
+                onBoostClick={(b) => {
+                  setSelectedBoost(b);
+                }}
+              />
             </motion.div>
           )}
         </AnimatePresence>
