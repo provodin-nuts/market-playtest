@@ -13,7 +13,6 @@ interface BoostConfig {
   rarity: string;
   paidViewing: string;
   incomePerMonth: string;
-  description: string;
 }
 
 const BOOSTS: Record<BoostType, BoostConfig> = {
@@ -21,37 +20,31 @@ const BOOSTS: Record<BoostType, BoostConfig> = {
     name: "Standard Boost",
     img: "/img/boost-standard.png",
     price: "$3.0",
-    income: "up to $10",
+    income: "$10",
     rarity: "STANDARD",
     paidViewing: "40 min / day",
     incomePerMonth: "Up to $10 / month",
-    description:
-      "Boost your earnings with Standard. Watch short videos for just 20 minutes a day and receive up to $10 over 30 days.",
   },
   prime: {
     name: "Prime Boost",
     img: "/img/boost-prime.png",
     price: "$6.18",
-    income: "up to $20",
+    income: "$20",
     rarity: "PRIME",
     paidViewing: "40 min / day",
     incomePerMonth: "Up to $20 / month",
-    description:
-      "Step up your game with Prime Boost. Earn up to $20 per month with the same daily 20-minute viewing habit.",
   },
   elite: {
     name: "Elite Boost",
     img: "/img/boost-elite.png",
     price: "$41.2",
     oldPrice: "$51.5",
-    discount: "-20%",
+    discount: "-50%",
     hasTimer: true,
-    income: "up to $169",
+    income: "$169",
     rarity: "ELITE",
     paidViewing: "40 min / day",
     incomePerMonth: "Up to $169 / month",
-    description:
-      "The most powerful boost available. Earn up to $169 per month by watching content for just 20 minutes a day.",
   },
 };
 
@@ -214,15 +207,34 @@ export default function BoostDetail({ boost, onBack, onBuy }: BoostDetailProps) 
             )}
           </div>
 
-          {/* Big income heading */}
-          <p className="font-['Russo_One:Regular',sans-serif] leading-[32px] text-[28px] text-white tracking-[0.28px]">
-            Possible income {cfg.income}
-          </p>
+          {/* Income heading */}
+          <div className="flex flex-col gap-[2px]">
+            <p className="font-['Russo_One:Regular',sans-serif] leading-[24px] text-[18px] text-white tracking-[0.18px]">
+              Get:
+            </p>
+            <p className="font-['Russo_One:Regular',sans-serif] leading-[32px] text-[28px] text-white tracking-[0.28px] uppercase">
+              UP TO {cfg.income}
+            </p>
+          </div>
 
           {/* Description */}
-          <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[20px] text-[14px] tracking-[0.14px]" style={{ color: "rgba(255,255,255,0.8)" }}>
-            {cfg.description}
-          </p>
+          <div className="flex flex-col gap-[14px]">
+            <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[20px] text-[14px] tracking-[0.14px]" style={{ color: "rgba(255,255,255,0.8)" }}>
+              Browse your feed—earn DOPPY. Coins are not awarded without the Boost
+            </p>
+            <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[20px] text-[14px] tracking-[0.14px]" style={{ color: "rgba(255,255,255,0.8)" }}>
+              Withdrawal fee: 30% instead of 75%
+            </p>
+            <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[20px] text-[14px] tracking-[0.14px]" style={{ color: "rgba(255,255,255,0.8)" }}>
+              <span className="text-white" style={{ fontWeight: 700 }}>30 active days</span> — only days when you're in the app count
+            </p>
+            <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[20px] text-[14px] tracking-[0.14px]" style={{ color: "rgba(255,255,255,0.8)" }}>
+              Try it risk-free — if it doesn't pay off, we'll refund your money
+            </p>
+            <p className="font-['Montserrat:Medium',sans-serif] font-medium leading-[20px] text-[14px] tracking-[0.14px]" style={{ color: "rgba(255,255,255,0.8)" }}>
+              Earnings depend on activity
+            </p>
+          </div>
 
           {/* Specs list */}
           <div className="flex flex-col">
